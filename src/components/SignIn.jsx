@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function SignIn() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // const [error, setError] = useState('');
+
+  const verifyEmailAndPassword = () => {
+    const reg = /\S+@\S+\.\S+/
+      .test(email);
+    const minLenght = 6;
+    if (reg && password.length >= minLenght) {
+      return false;
+    }
+    return true;
+  };
+
   return (
     <section>
       <div>
@@ -11,7 +25,7 @@ function SignIn() {
             <input
               type="email"
               id="emailLogin"
-              // onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </label>
           <label htmlFor="passwordLogin">
@@ -19,13 +33,13 @@ function SignIn() {
             <input
               type="password"
               id="passwordLogin"
-              // onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </label>
           <button
             className="btnLogin"
             type="button"
-            // disabled={verifyEmailAndPassword()}
+            disabled={verifyEmailAndPassword()}
             // onClick={() => login()}
           >
             Sign-In
