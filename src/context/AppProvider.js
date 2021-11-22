@@ -9,6 +9,7 @@ function AppProvider({ children }) {
   const [posts, setPosts] = useState([]);
   const [isLogged, setIsLogged] = useState(false);
   const [user, setUser] = useState('');
+  const [userPosts, setUserPosts] = useState([]);
 
   const contextValue = {
     signInRendering,
@@ -19,6 +20,8 @@ function AppProvider({ children }) {
     setIsLogged,
     user,
     setUser,
+    userPosts,
+    setUserPosts,
   };
 
   return (
