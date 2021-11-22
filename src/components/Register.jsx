@@ -5,6 +5,25 @@ function Register() {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const verifyName = () => {
+    if (name === '') {
+      setError('Name is required');
+    }
+  };
+
+  const verifyEmail = () => {
+    const reg = /\S+@\S+\.\S+/
+      .test(email);
+    if (email === '') {
+      setError('Email is required');
+      return;
+    }
+    if (!reg) {
+      setError('Invalid email format');
+    }
+  };
 
   return (
     <section>
