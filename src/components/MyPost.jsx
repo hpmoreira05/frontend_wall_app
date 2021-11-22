@@ -1,15 +1,19 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import DeletePostButton from './DeletePostButton';
 
 function MyPost({ myPost }) {
+  const {
+    _id, title, description, createdAt, editedAt,
+  } = myPost;
   return (
     <div>
-      <div>{myPost.title}</div>
-      <div>{myPost.description}</div>
-      <div>{myPost.createdAt}</div>
-      <div>{myPost.editedAt}</div>
+      <div>{title}</div>
+      <div>{description}</div>
+      <div>{createdAt}</div>
+      <div>{editedAt}</div>
       <button type="button">Edit</button>
-      <button type="button">Delete</button>
+      <DeletePostButton id={_id} />
     </div>
   );
 }

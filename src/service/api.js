@@ -124,7 +124,7 @@ export const deletePost = async (id) => {
     console.log(request.status);
     const response = await request.json();
     console.log(response);
-    return response;
+    return { message: response.message, status: request.status };
   } catch (err) {
     console.log(err);
     return err;
