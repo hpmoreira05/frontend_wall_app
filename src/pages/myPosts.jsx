@@ -34,7 +34,7 @@ function MyPosts() {
       <Header />
       {isLoading ? 'Loading...' : (
         <div>
-          {userPosts.length > 0 ? userPosts.map((myPost) => <MyPost myPost={myPost} />) : 'There are no posts yet. What about getting start? ;)'}
+          {userPosts.length > 0 ? userPosts.map((myPost) => <MyPost key={myPost.createdAt} myPost={myPost} />) : 'There are no posts yet. What about getting start? ;)'}
         </div>
       )}
     </div>

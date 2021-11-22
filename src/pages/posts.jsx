@@ -29,7 +29,7 @@ function Posts() {
     <div>
       <Header />
       {isLoading ? 'Loading...' : (
-        <div>{posts.length > 0 ? posts.map((post) => <Post post={post} />) : 'There are no posts yet. Be the first one ;)'}</div>
+        <div>{posts.length > 0 ? posts.map((post) => <Post key={post.createdAt} post={post} />) : 'There are no posts yet. Be the first one ;)'}</div>
       )}
       <div>{error ? { error } : null}</div>
     </div>
