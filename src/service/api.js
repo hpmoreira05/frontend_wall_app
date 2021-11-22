@@ -1,5 +1,3 @@
-const token = localStorage.getItem('token');
-
 export const createUser = async (name, email, password) => {
   const requestOptions = {
     method: 'POST',
@@ -43,6 +41,7 @@ export const login = async (email, password) => {
 };
 
 export const createPost = async (title, description) => {
+  const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-type': 'application/json', Authorization: `${token}` },
@@ -75,6 +74,7 @@ export const getAllPosts = async () => {
 };
 
 export const getPostsByUser = async () => {
+  const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'GET',
     headers: { 'Content-type': 'application/json', Authorization: `${token}` },
@@ -92,6 +92,7 @@ export const getPostsByUser = async () => {
 };
 
 export const updatePost = async (title, description, id) => {
+  const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'PUT',
     headers: { 'Content-type': 'application/json', Authorization: `${token}` },
@@ -113,6 +114,7 @@ export const updatePost = async (title, description, id) => {
 };
 
 export const deletePost = async (id) => {
+  const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'DELETE',
     headers: { 'Content-type': 'application/json', Authorization: `${token}` },

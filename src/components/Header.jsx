@@ -3,7 +3,10 @@ import { Link, useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 
 function Header() {
-  const { isLogged, setSignInRendering, user } = useContext(AppContext);
+  const {
+    isLogged, setSignInRendering, user,
+    setUser, setIsLogged, setUserPosts,
+  } = useContext(AppContext);
   const history = useHistory();
 
   const path = history.location.pathname;
@@ -18,11 +21,21 @@ function Header() {
     history.push('/');
   };
 
+  const logout = () => {
+    setUser('');
+    setUserPosts([]);
+    setIsLogged(false);
+    localStorage.removeItem('token');
+    history.push('/');
+  };
+
   return (
     <div>
       {isLogged ? (
         <div>
           <Link to="/posts">ALL POSTS</Link>
+          <button type="button" onClick={() => history.push('/posts/mine')}>MY POSTS</button>
+          <button type="button" onClick={() => logout()}>Logout</button>
           <div>{user}</div>
         </div>
       ) : (
