@@ -25,6 +25,20 @@ function Register() {
     }
   };
 
+  const verifyPassword = () => {
+    if (password === '') {
+      setError('Password is required');
+      return;
+    }
+    if (password.length < 6) {
+      setError('Passwords must be at least 6 characters');
+      return;
+    }
+    if (password !== confirmPassword) {
+      setError('Passwords must match');
+    }
+  };
+
   return (
     <section>
       <div>
