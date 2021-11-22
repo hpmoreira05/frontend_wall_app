@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { login } from '../service/api';
 
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [error, setError] = useState('');
+  const [error, setError] = useState('');
 
   const verifyEmailAndPassword = () => {
     const reg = /\S+@\S+\.\S+/
@@ -13,6 +14,16 @@ function SignIn() {
       return false;
     }
     return true;
+  };
+
+  const signIn = async () => {
+    const token = await login(email, password);
+    console.log(token);
+    if (token.status !== 200) {
+      setError(token.message);
+      return;
+    }
+    alert('Signed in successfully');
   };
 
   return (
@@ -40,10 +51,11 @@ function SignIn() {
             className="btnLogin"
             type="button"
             disabled={verifyEmailAndPassword()}
-            // onClick={() => login()}
+            onClick={() => signIn()}
           >
             Sign-In
           </button>
+          {error && <div>{error}</div>}
         </div>
       </div>
     </section>

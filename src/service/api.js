@@ -35,7 +35,7 @@ export const login = async (email, password) => {
     const request = await fetch('http://localhost:3000/login', requestOptions);
     const response = await request.json();
     console.log(response);
-    return response;
+    return { token: response.token, status: request.status };
   } catch (err) {
     console.log(err);
     return err;
