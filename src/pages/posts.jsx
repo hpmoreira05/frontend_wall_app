@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import Header from '../components/Header';
 import Post from '../components/Post';
 import AppContext from '../context/AppContext';
 import { getAllPosts } from '../service/api';
@@ -26,6 +27,7 @@ function Posts() {
 
   return (
     <div>
+      <Header />
       {isLoading ? 'Loading...' : (
         <div>{posts.length > 0 ? posts.map((post) => <Post post={post} />) : 'There are no posts yet. Be the first one ;)'}</div>
       )}

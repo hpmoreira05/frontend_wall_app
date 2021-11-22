@@ -3,7 +3,7 @@ import AppContext from '../context/AppContext';
 import { login } from '../service/api';
 
 function SignIn() {
-  const { setSignInRendering } = useContext(AppContext);
+  const { setSignInRendering, setIsLogged } = useContext(AppContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -31,6 +31,7 @@ function SignIn() {
     localStorage.setItem('token', token.message);
     alert('Signed in successfully');
     setLoading(false);
+    setIsLogged(true);
   };
 
   useEffect(() => {
