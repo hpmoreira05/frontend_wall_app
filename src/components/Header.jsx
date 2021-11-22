@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 
 function Header() {
-  const { isLogged, setSignInRendering } = useContext(AppContext);
+  const { isLogged, setSignInRendering, user } = useContext(AppContext);
   const history = useHistory();
 
   const path = history.location.pathname;
@@ -20,7 +20,12 @@ function Header() {
 
   return (
     <div>
-      {isLogged ? <div>Logged</div> : (
+      {isLogged ? (
+        <div>
+          <Link to="/posts">ALL POSTS</Link>
+          <div>{user}</div>
+        </div>
+      ) : (
         <div>
           {path === '/posts' ? (
             <div>
