@@ -15,7 +15,9 @@ function Register() {
   const verifyName = () => {
     if (name === '') {
       setError('Name is required');
+      return false;
     }
+    return true;
   };
 
   const verifyEmail = () => {
@@ -23,29 +25,36 @@ function Register() {
       .test(email);
     if (email === '') {
       setError('Email is required');
-      return;
+      return false;
     }
     if (!reg) {
       setError('Invalid email format');
+      return false;
     }
+    return true;
   };
 
   const verifyPassword = () => {
     if (password === '') {
       setError('Password is required');
-      return;
+      return false;
     }
     if (password.length < 6) {
       setError('Passwords must be at least 6 characters');
-      return;
+      return false;
     }
     if (password !== confirmPassword) {
       setError('Passwords must match');
+      return false;
     }
+    return true;
   };
 
   const createAccount = async () => {
     setClicked(true);
+    if (!verifyName()) return;
+    if (!verifyEmail()) return;
+    if (!verifyPassword()) return;
     setLoading(true);
     const fetchCreateUser = await createUser(name, email, password);
     if (fetchCreateUser.status !== 201) {
@@ -61,9 +70,6 @@ function Register() {
   useEffect(() => {
     setClicked(false);
     setError('');
-    verifyPassword();
-    verifyEmail();
-    verifyName();
   }, [name, email, password, confirmPassword]);
 
   return (
