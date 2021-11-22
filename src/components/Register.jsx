@@ -8,6 +8,7 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [clicked, setClicked] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const verifyName = () => {
     if (name === '') {
@@ -43,11 +44,14 @@ function Register() {
 
   const createAccount = async () => {
     setClicked(true);
+    setLoading(true);
     const fetchCreateUser = await createUser(name, email, password);
     if (fetchCreateUser.status !== 201) {
       setError(fetchCreateUser.message);
+      setLoading(false);
       return;
     }
+    setLoading(false);
     alert(fetchCreateUser.message);
   };
 
@@ -102,7 +106,7 @@ function Register() {
           </label>
           { clicked && <div>{ error }</div> }
           <button type="submit" className="btnLogin" onClick={() => createAccount()}>
-            Create account
+            {loading ? 'Loading...' : 'Create account'}
           </button>
         </div>
       </div>
