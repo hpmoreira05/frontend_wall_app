@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -6,6 +6,7 @@ function Register() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  const [clicked, setClicked] = useState(false);
 
   const verifyName = () => {
     if (name === '') {
@@ -39,17 +40,29 @@ function Register() {
     }
   };
 
+  const createAccount = () => {
+    setClicked(true);
+  };
+
+  useEffect(() => {
+    setClicked(false);
+    setError('');
+    verifyPassword();
+    verifyEmail();
+    verifyName();
+  }, [name, email, password, confirmPassword]);
+
   return (
     <section>
       <div>
         <div>
           <h2>Register</h2>
           <label htmlFor="name">
-            Nome completo
+            Name
             <input
               id="name"
               type="text"
-              placeholder="Nome"
+              placeholder="Name"
               onChange={(e) => setName(e.target.value)}
             />
           </label>
@@ -63,24 +76,25 @@ function Register() {
             />
           </label>
           <label htmlFor="password">
-            Senha
+            Password
             <input
               id="password"
               type="password"
-              placeholder="Senha"
+              placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
           <label htmlFor="confirmPassword">
-            Confirmar senha
+            Re-enter password
             <input
               id="confirmPassword"
               type="password"
-              placeholder="Confirmar senha"
+              placeholder="Re-enter password"
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </label>
-          <button type="submit" className="btnLogin">
+          { clicked && <div>{ error }</div> }
+          <button type="submit" className="btnLogin" onClick={() => createAccount()}>
             Create account
           </button>
         </div>
