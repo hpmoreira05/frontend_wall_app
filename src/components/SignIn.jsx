@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import { login } from '../service/api';
 
@@ -36,6 +36,7 @@ function SignIn() {
     setLoading(false);
     setIsLogged(true);
     setUser(email);
+    history.push('/posts');
   };
 
   useEffect(() => {
