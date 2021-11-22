@@ -84,7 +84,7 @@ export const getPostsByUser = async () => {
     console.log(request.status);
     const response = await request.json();
     console.log(response);
-    return response;
+    return { posts: response, status: request.status };
   } catch (err) {
     console.log(err);
     return err;

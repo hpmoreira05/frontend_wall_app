@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
-function MyPost({myPost}) {
+function MyPost({ myPost }) {
   return (
     <div>
       <div>{myPost.title}</div>
