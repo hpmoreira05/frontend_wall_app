@@ -65,10 +65,9 @@ export const createPost = async (title, description) => {
 export const getAllPosts = async () => {
   try {
     const request = await fetch('http://localhost:3000/posts');
-    console.log(request.status);
     const response = await request.json();
     console.log(response);
-    return response;
+    return { posts: response, status: request.status };
   } catch (err) {
     console.log(err);
     return err;
