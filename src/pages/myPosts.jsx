@@ -1,9 +1,9 @@
 import React from 'react';
 
-function myPosts() {
+function MyPosts() {
   return (
     <div>My posts</div>
   );
 }
 
-export default myPosts;
+export default MyPosts;
