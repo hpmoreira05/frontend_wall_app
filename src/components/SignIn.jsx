@@ -5,6 +5,7 @@ function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const verifyEmailAndPassword = () => {
     const reg = /\S+@\S+\.\S+/
@@ -17,14 +18,17 @@ function SignIn() {
   };
 
   const signIn = async () => {
+    setLoading(true);
     const token = await login(email, password);
     console.log(token);
     if (token.status !== 200) {
       setError(token.message);
+      setLoading(false);
       return;
     }
     localStorage.setItem('token', token.message);
     alert('Signed in successfully');
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -53,14 +57,13 @@ function SignIn() {
             />
           </label>
           <button
-            className="btnLogin"
             type="button"
             disabled={verifyEmailAndPassword()}
             onClick={() => signIn()}
           >
-            Sign-In
+            {loading ? 'Loading...' : 'Sign-In'}
           </button>
-          {error && <div>{error}</div>}
+          {error ? <div>{error}</div> : null}
         </div>
       </div>
     </section>
