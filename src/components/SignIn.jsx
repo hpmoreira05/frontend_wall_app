@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import AppContext from '../context/AppContext';
 import { login } from '../service/api';
 
 function SignIn() {
+  const { setSignInRendering } = useContext(AppContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -40,6 +42,7 @@ function SignIn() {
       <div>
         <div>
           <h2>Sign-In</h2>
+          <button type="button" onClick={() => setSignInRendering(false)}>Sign-up</button>
           <label htmlFor="emailLogin">
             E-mail
             <input

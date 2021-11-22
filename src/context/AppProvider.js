@@ -1,11 +1,15 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AppContext from './AppContext';
 
 function AppProvider({ children }) {
+  const [signInRendering, setSignInRendering] = useState(true);
+
   const contextValue = {
+    signInRendering,
+    setSignInRendering,
   };
 
   return (

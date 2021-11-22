@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import AppContext from '../context/AppContext';
 import { createUser } from '../service/api';
 
 function Register() {
+  const { setSignInRendering } = useContext(AppContext);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -53,6 +55,7 @@ function Register() {
     }
     setLoading(false);
     alert(fetchCreateUser.message);
+    setSignInRendering(true);
   };
 
   useEffect(() => {
@@ -68,6 +71,7 @@ function Register() {
       <div>
         <div>
           <h2>Register</h2>
+          <button type="button" onClick={() => setSignInRendering(true)}>Sign-in</button>
           <label htmlFor="name">
             Name
             <input
