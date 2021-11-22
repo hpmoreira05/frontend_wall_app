@@ -1,13 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import AppContext from '../context/AppContext';
 import { login } from '../service/api';
 
 function SignIn() {
-  const { setSignInRendering, setIsLogged } = useContext(AppContext);
+  const { setSignInRendering, setIsLogged, setUser } = useContext(AppContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const history = useHistory();
 
   const verifyEmailAndPassword = () => {
     const reg = /\S+@\S+\.\S+/
@@ -32,6 +35,7 @@ function SignIn() {
     alert('Signed in successfully');
     setLoading(false);
     setIsLogged(true);
+    setUser(email);
   };
 
   useEffect(() => {
