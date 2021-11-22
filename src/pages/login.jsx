@@ -1,9 +1,13 @@
 import React from 'react';
 import Register from '../components/Register';
+import SignIn from '../components/SignIn';
 
 function Login() {
   return (
-    <Register />
+    <div>
+      <Register />
+      <SignIn />
+    </div>
   );
 }
 
