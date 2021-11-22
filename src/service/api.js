@@ -54,7 +54,7 @@ export const createPost = async (title, description) => {
     const request = await fetch('http://localhost:3000/posts', requestOptions);
     const response = await request.json();
     console.log(response);
-    return response;
+    return { message: response.message, status: request.status };
   } catch (err) {
     console.log(err);
     return err;

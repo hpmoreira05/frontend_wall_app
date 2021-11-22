@@ -1,8 +1,29 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { createPost } from '../service/api';
 
 function CreatePost() {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const history = useHistory();
+
+  const fetchCreatePost = async () => {
+    setIsLoading(true);
+    const response = await createPost(title, description);
+    if (response.status === 201) {
+      alert(response.message);
+      setIsLoading(false);
+      history.push('/posts');
+      return;
+    }
+    setIsLoading(false);
+    alert(`Error: ${response.status} - ${response.message}`);
+    if (response.status === 401) {
+      history.push('/');
+    }
+  };
 
   return (
     <div>
@@ -23,15 +44,12 @@ function CreatePost() {
           onChange={(e) => setDescription(e.target.value)}
         />
       </label>
-      {title}
-      {description}
-      {/* <button
+      <button
         type="button"
-        disabled={verifyEmailAndPassword()}
-        onClick={() => signIn()}
+        onClick={() => fetchCreatePost()}
       >
-        {loading ? 'Loading...' : 'Sign-In'}
-      </button> */}
+        {isLoading ? 'Loading...' : 'Send'}
+      </button>
     </div>
   );
 }
