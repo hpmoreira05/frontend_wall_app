@@ -13,8 +13,8 @@ export const createUser = async (name, email, password) => {
   try {
     const request = await fetch('http://localhost:3000/users', requestOptions);
     const response = await request.json();
-    console.log(response);
-    return response;
+    console.log(response.message);
+    return { message: response.message, status: request.status };
   } catch (err) {
     console.log(err);
     return err;

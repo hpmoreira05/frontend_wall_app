@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createUser } from '../service/api';
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -40,8 +41,14 @@ function Register() {
     }
   };
 
-  const createAccount = () => {
+  const createAccount = async () => {
     setClicked(true);
+    const fetchCreateUser = await createUser(name, email, password);
+    if (fetchCreateUser.status !== 201) {
+      setError(fetchCreateUser.message);
+      return;
+    }
+    alert(fetchCreateUser.message);
   };
 
   useEffect(() => {
