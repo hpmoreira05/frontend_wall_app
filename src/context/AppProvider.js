@@ -6,10 +6,13 @@ import AppContext from './AppContext';
 
 function AppProvider({ children }) {
   const [signInRendering, setSignInRendering] = useState(true);
+  const [posts, setPosts] = ([]);
 
   const contextValue = {
     signInRendering,
     setSignInRendering,
+    posts,
+    setPosts,
   };
 
   return (
