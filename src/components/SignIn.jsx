@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { login } from '../service/api';
 
 function SignIn() {
@@ -23,8 +23,13 @@ function SignIn() {
       setError(token.message);
       return;
     }
+    localStorage.setItem('token', token.message);
     alert('Signed in successfully');
   };
+
+  useEffect(() => {
+    setError('');
+  }, [email, password]);
 
   return (
     <section>
