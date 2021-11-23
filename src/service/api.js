@@ -96,17 +96,17 @@ export const updatePost = async (title, description, id) => {
   const requestOptions = {
     method: 'PUT',
     headers: { 'Content-type': 'application/json', Authorization: `${token}` },
-    body: {
+    body: JSON.stringify({
       title,
       description,
-    },
+    }),
   };
   try {
     const request = await fetch(`http://localhost:3000/posts/${id}`, requestOptions);
     console.log(request.status);
     const response = await request.json();
     console.log(response);
-    return response;
+    return { message: response.message, status: request.status };
   } catch (err) {
     console.log(err);
     return err;
