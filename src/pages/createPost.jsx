@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import { createPost } from '../service/api';
+import Header from '../components/Header';
 
 function CreatePost() {
   const { setIsLogged } = useContext(AppContext);
@@ -30,6 +31,7 @@ function CreatePost() {
 
   return (
     <div>
+      <Header />
       <label htmlFor="title">
         Title
         <input
@@ -39,7 +41,7 @@ function CreatePost() {
         />
       </label>
       <label htmlFor="description">
-        Password
+        Description
         <textarea
           rows="20"
           cols="100"

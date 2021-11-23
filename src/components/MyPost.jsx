@@ -5,7 +5,7 @@ import DeletePostButton from './DeletePostButton';
 
 function MyPost({ myPost }) {
   const {
-    _id, title, description, createdAt, editedAt,
+    _id, title, description, createdAt, updatedAt,
   } = myPost;
 
   const history = useHistory();
@@ -15,7 +15,7 @@ function MyPost({ myPost }) {
       <div>{title}</div>
       <div>{description}</div>
       <div>{createdAt}</div>
-      <div>{editedAt}</div>
+      <div>{updatedAt}</div>
       <button type="button" onClick={() => history.push({ pathname: '/updatepost', state: { myPost } })}>Edit</button>
       <DeletePostButton id={_id} />
     </div>

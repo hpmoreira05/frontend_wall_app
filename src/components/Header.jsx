@@ -36,7 +36,7 @@ function Header() {
           <Link to="/posts">ALL POSTS</Link>
           <button type="button" onClick={() => history.push('/posts/mine')}>MY POSTS</button>
           <button type="button" onClick={() => logout()}>Logout</button>
-          <button type="button" onClick={() => history.push('/createpost')}>Add new post</button>
+          {path !== '/createpost' ? <button type="button" onClick={() => history.push('/createpost')}>Add new post</button> : null}
           <div>{user}</div>
         </div>
       ) : (

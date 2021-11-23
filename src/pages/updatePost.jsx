@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import { updatePost } from '../service/api';
+import Header from '../components/Header';
 
 function UpdatePost(props) {
   const { setIsLogged } = useContext(AppContext);
@@ -33,6 +34,7 @@ function UpdatePost(props) {
 
   return (
     <div>
+      <Header />
       <div>
         <label htmlFor="title">
           Title
@@ -44,7 +46,7 @@ function UpdatePost(props) {
           />
         </label>
         <label htmlFor="description">
-          Password
+          Description
           <textarea
             value={updatedDescription}
             rows="20"
