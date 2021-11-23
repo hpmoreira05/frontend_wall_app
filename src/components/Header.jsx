@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
+import styles from '../styles/Header.module.css';
+import Logo from '../images/logo.svg';
+import userAvatar from '../images/userAvatar.svg';
 
 function Header() {
   const {
@@ -30,20 +33,34 @@ function Header() {
   };
 
   return (
-    <div>
+    <div className={styles.header}>
+      <img src={Logo} alt="logo" />
       {isLogged ? (
-        <div>
-          <Link to="/posts">ALL POSTS</Link>
-          <button type="button" onClick={() => history.push('/posts/mine')}>MY POSTS</button>
-          <button type="button" onClick={() => logout()}>Logout</button>
-          {path !== '/createpost' ? <button type="button" onClick={() => history.push('/createpost')}>Add new post</button> : null}
-          <div>{user}</div>
+        <div className={styles.loggedHeader}>
+          <div className={styles.container}>
+            <div className={path === '/posts' ? styles.active : null}>
+              <Link to="/posts" className={styles.link}>ALL POSTS</Link>
+            </div>
+            <div className={path === '/posts/mine' ? styles.active : null}>
+              <Link to="/posts/mine">MY POSTS</Link>
+            </div>
+          </div>
+          <div className={styles.container}>
+            {path !== '/createpost' ? <button type="button" onClick={() => history.push('/createpost')}>Add new post</button> : null}
+            <div className={styles.userInfo}>
+              <img src={userAvatar} alt="user avatar" />
+              <div>
+                <div>{user}</div>
+                <button type="button" onClick={() => logout()}>Sign out</button>
+              </div>
+            </div>
+          </div>
         </div>
       ) : (
         <div>
           {path === '/posts' ? (
             <div>
-              <button type="button" onClick={() => signIn()}>Sign in</button>
+              <button type="button" onClick={() => signIn()} className={styles.signIn}>Sign In</button>
               <button type="button" onClick={() => signUp()}>Sign up</button>
             </div>
           ) : (

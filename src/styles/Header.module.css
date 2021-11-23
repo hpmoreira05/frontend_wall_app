@@ -1,0 +1,85 @@
+.header{
+  background-color: #050505;
+  height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10%;
+}
+
+.signIn{
+  border: none;
+  text-transform: none;
+  text-decoration: underline;
+}
+
+.userInfo{
+  display: flex;
+}
+
+.userInfo button{
+  border: none;
+  text-transform: none;
+  text-decoration: underline;
+  height: auto;
+  font-size: 12px;
+  line-height: 18px;
+  padding: 0;
+}
+
+.userInfo img{
+  padding: 0 12px;
+}
+
+.loggedHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-left: 88px;
+}
+
+.loggedHeader button{
+  margin-right: 16px;
+}
+
+.loggedHeader a{
+  text-decoration: none;
+  margin: 0 16px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.loggedHeader a:visited{
+  color: none;
+}
+
+.active{
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 85px;
+  color: #4A7BFF;
+}
+
+.active a{
+  color: #4A7BFF;
+}
+
+.active:before{
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  bottom: 0px;
+  left: 0;
+  background: #4A7BFF;
+  border-radius: 1px;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+}
