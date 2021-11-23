@@ -30,7 +30,7 @@ function CreatePost() {
     }
     setIsLoading(false);
     setMessage(`Error: ${response.status} - ${response.message}`);
-    setRedirectTo('/createpost');
+    setRedirectTo('');
     setModalOpened(true);
     if (response.status === 401) {
       setRedirectTo('/');

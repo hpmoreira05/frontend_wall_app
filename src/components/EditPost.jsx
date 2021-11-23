@@ -1,30 +1,37 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import AppContext from '../context/AppContext';
 import { updatePost } from '../service/api';
 import Header from './Header';
+import Modal from './Modal';
 
 function EditPost({ props }) {
+  const { modalOpened, setModalOpened } = useContext(AppContext);
   const { location } = props;
   const { _id } = location.state.myPost;
   const [updatedTitle, setUpdatedTitle] = useState(location.state.myPost.title);
   const [updatedDescription,
     setUpdatedDescription] = useState(location.state.myPost.description);
   const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState('');
+  const [redirectTo, setRedirectTo] = useState('');
 
   const history = useHistory();
 
   const fetchUpdatePost = async () => {
     const response = await updatePost(updatedTitle, updatedDescription, _id);
-    console.log(response);
     if (response.status === 200) {
-      alert(response.message);
+      setMessage(response.message);
+      setRedirectTo('/posts');
+      setModalOpened(true);
       setIsLoading(false);
-      history.push('/posts');
       return;
     }
     setIsLoading(false);
-    alert(`Error: ${response.status} - ${response.message}`);
+    setMessage(`Error: ${response.status} - ${response.message}`);
+    setRedirectTo('');
+    setModalOpened(true);
   };
 
   return (
@@ -58,6 +65,7 @@ function EditPost({ props }) {
         </button>
         <button type="button" onClick={() => history.push('/posts')}>Cancel</button>
       </div>
+      {modalOpened ? <Modal message={message} redirect={redirectTo} /> : null}
     </div>
   );
 }

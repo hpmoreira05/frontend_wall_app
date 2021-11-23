@@ -11,7 +11,7 @@ function Modal({ message, redirect }) {
   const modal = () => {
     setModalOpened(false);
     setSignInRendering(true);
-    history.push(redirect);
+    if (redirect) history.push(redirect);
   };
 
   return (
