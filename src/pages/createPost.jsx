@@ -3,9 +3,10 @@ import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import { createPost } from '../service/api';
 import Header from '../components/Header';
+import NotLogged from '../components/NotLogged';
 
 function CreatePost() {
-  const { setIsLogged } = useContext(AppContext);
+  const { setIsLogged, isLogged } = useContext(AppContext);
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -31,31 +32,35 @@ function CreatePost() {
 
   return (
     <div>
-      <Header />
-      <label htmlFor="title">
-        Title
-        <input
-          type="text"
-          id="title"
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </label>
-      <label htmlFor="description">
-        Description
-        <textarea
-          rows="20"
-          cols="100"
-          id="description"
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </label>
-      <button
-        type="button"
-        onClick={() => fetchCreatePost()}
-      >
-        {isLoading ? 'Loading...' : 'Send'}
-      </button>
-      <button type="button" onClick={() => history.push('/posts')}>Cancel</button>
+      {!isLogged ? <NotLogged /> : (
+        <>
+          <Header />
+          <label htmlFor="title">
+            Title
+            <input
+              type="text"
+              id="title"
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </label>
+          <label htmlFor="description">
+            Description
+            <textarea
+              rows="20"
+              cols="100"
+              id="description"
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </label>
+          <button
+            type="button"
+            onClick={() => fetchCreatePost()}
+          >
+            {isLoading ? 'Loading...' : 'Send'}
+          </button>
+          <button type="button" onClick={() => history.push('/posts')}>Cancel</button>
+        </>
+      )}
     </div>
   );
 }
