@@ -78,7 +78,7 @@ function Register() {
   return (
     <section>
       <div className={styles.form}>
-        <h2>Create yout account</h2>
+        <h2>Create your account</h2>
         <label htmlFor="name">
           Name
           <input

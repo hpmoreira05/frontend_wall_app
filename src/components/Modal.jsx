@@ -2,6 +2,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
+import styles from '../styles/Modal.module.css';
 
 function Modal({ message, redirect }) {
   const { setModalOpened, setSignInRendering } = useContext(AppContext);
@@ -15,9 +16,11 @@ function Modal({ message, redirect }) {
   };
 
   return (
-    <div>
-      <div>{message}</div>
-      <button type="button" onClick={() => modal()}>Close</button>
+    <div className={styles.mainContainer}>
+      <div className={styles.secondContainer}>
+        <div className={styles.message}>{message}</div>
+        <button type="button" onClick={() => modal()}>Close</button>
+      </div>
     </div>
   );
 }
