@@ -12,7 +12,6 @@ function Posts() {
   const fetchPosts = async () => {
     const response = await getAllPosts();
     if (response.status === 200) {
-      console.log(response.posts);
       setPosts(response.posts);
       setIsLoading(false);
       return;

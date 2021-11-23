@@ -25,14 +25,12 @@ function SignIn() {
   const signIn = async () => {
     setLoading(true);
     const token = await login(email, password);
-    console.log(token);
     if (token.status !== 200) {
       setError(token.message);
       setLoading(false);
       return;
     }
     localStorage.setItem('token', token.message);
-    alert('Signed in successfully');
     setLoading(false);
     setIsLogged(true);
     setUser(email);
