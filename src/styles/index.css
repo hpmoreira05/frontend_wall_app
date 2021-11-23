@@ -1,4 +1,52 @@
 body{
+  padding: 0;
+  margin: 0;
   background-color: #171717;
   color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+}
+
+button {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+	text-transform: uppercase;
+	color: #4A7BFF;
+  background-color: transparent;
+	border: 2px solid #4A7BFF;
+	position: relative;
+	transition: all 1s;
+	overflow: hidden;
+  height: 48px;
+  padding:0 24px;
+  border-radius: 30px;
+}
+
+button:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(to bottom right, #00FFFF, #8F00FF);
+	z-index: -1;
+	transform: translateX(-100%);
+	transition: all 0.5s;
+}
+
+button:hover:before {
+	transform: translateX(0);
+}
+
+button:hover {
+	color: #FFFFFF;
+}
+
+input{
+  background-color: transparent;
+  border: 2px solid #4A7BFF;
+  border-radius: 8px;
+  color: #FFFFFF;
+  padding: 16px;
 }
