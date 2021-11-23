@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import AppContext from '../context/AppContext';
 import { createUser } from '../service/api';
 import Modal from './Modal';
+import styles from '../styles/login.module.css';
 
 function Register() {
   const { setSignInRendering, setModalOpened, modalOpened } = useContext(AppContext);
@@ -76,51 +77,49 @@ function Register() {
 
   return (
     <section>
-      <div>
-        <div>
-          <h2>Register</h2>
-          <button type="button" onClick={() => setSignInRendering(true)}>Sign-in</button>
-          <label htmlFor="name">
-            Name
-            <input
-              id="name"
-              type="text"
-              placeholder="Name"
-              onChange={(e) => setName(e.target.value)}
-            />
-          </label>
-          <label htmlFor="email">
-            E-mail
-            <input
-              id="email"
-              type="email"
-              placeholder="E-mail"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-          <label htmlFor="password">
-            Password
-            <input
-              id="password"
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-          <label htmlFor="confirmPassword">
-            Re-enter password
-            <input
-              id="confirmPassword"
-              type="password"
-              placeholder="Re-enter password"
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-          </label>
-          { clicked && <div>{ error }</div> }
-          <button type="submit" className="btnLogin" onClick={() => createAccount()}>
-            {loading ? 'Loading...' : 'Create account'}
-          </button>
-        </div>
+      <div className={styles.form}>
+        <h2>Create yout account</h2>
+        <label htmlFor="name">
+          Name
+          <input
+            id="name"
+            type="text"
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+        <label htmlFor="email">
+          E-mail
+          <input
+            id="email"
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <label htmlFor="password">
+          Password
+          <input
+            id="password"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+        <label htmlFor="confirmPassword">
+          Re-enter password
+          <input
+            id="confirmPassword"
+            type="password"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        </label>
+        { clicked && <div className={styles.error}>{ error }</div> }
+        <button type="submit" className={styles.createAccBttn} onClick={() => createAccount()}>
+          {loading ? 'Loading...' : 'Create account'}
+        </button>
+        <span>
+          Already have an account?
+          {' '}
+          <button type="button" onClick={() => setSignInRendering(true)} className={styles.signUpBttn}>Sign-in</button>
+        </span>
         {modalOpened ? <Modal message={message} /> : null}
       </div>
     </section>

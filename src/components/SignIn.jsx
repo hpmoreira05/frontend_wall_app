@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import { login } from '../service/api';
+import styles from '../styles/login.module.css';
 
 function SignIn() {
   const { setSignInRendering, setIsLogged, setUser } = useContext(AppContext);
@@ -43,35 +44,38 @@ function SignIn() {
 
   return (
     <section>
-      <div>
-        <div>
-          <h2>Sign-In</h2>
-          <button type="button" onClick={() => setSignInRendering(false)}>Sign-up</button>
-          <label htmlFor="emailLogin">
-            E-mail
-            <input
-              type="email"
-              id="emailLogin"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-          <label htmlFor="passwordLogin">
-            Password
-            <input
-              type="password"
-              id="passwordLogin"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-          <button
-            type="button"
-            disabled={verifyEmailAndPassword()}
-            onClick={() => signIn()}
-          >
-            {loading ? 'Loading...' : 'Sign-In'}
-          </button>
-          {error ? <div>{error}</div> : null}
-        </div>
+      <div className={styles.form}>
+        <h2>Welcome back</h2>
+        <label htmlFor="emailLogin">
+          E-mail
+          <input
+            type="email"
+            id="emailLogin"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <label htmlFor="passwordLogin">
+          Password
+          <input
+            type="password"
+            id="passwordLogin"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+        <button
+          type="button"
+          disabled={verifyEmailAndPassword()}
+          onClick={() => signIn()}
+          className={styles.signInBttn}
+        >
+          {loading ? 'Loading...' : 'Sign-In'}
+        </button>
+        <span>
+          Dont have an account yet?
+          {' '}
+          <button type="button" onClick={() => setSignInRendering(false)} className={styles.signUpBttn}>Sign-up</button>
+        </span>
+        {error ? <div>{error}</div> : null}
       </div>
     </section>
   );

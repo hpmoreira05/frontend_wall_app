@@ -2,5 +2,62 @@
   display: flex;
   padding: 0 10%;
   align-items: center;
+  justify-content: space-between;
+}
+
+.login img{
   margin-top: 98px;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form label{
+  display: flex;
+  flex-direction: column;
+  width: 384px;
+  padding-top: 16px;
+}
+
+.form label input{
+  margin-top: 8px;
+}
+
+.form h2{
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 54px;
+  padding-bottom: 30px;
+}
+
+.signUpBttn{
+  font-size: 16px;
+  line-height: 24px;
+  border: none;
+  text-decoration: underline;
+  text-transform: none;
+}
+
+.signUpBttn:before{
+  transform: none;
+  background-image: none;
+}
+
+.signInBttn{
+  width: 129px;
+  margin: 64px 0;
+}
+
+.createAccBttn{
+  margin: 32px 0;
+}
+
+.error{
+  position: absolute;
+  color: red;
+  padding-top: 8px;
 }
