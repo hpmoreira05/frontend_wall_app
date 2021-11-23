@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import AppContext from '../context/AppContext';
 import { createPost } from '../service/api';
 
 function CreatePost() {
+  const { setIsLogged } = useContext(AppContext);
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -21,6 +23,7 @@ function CreatePost() {
     setIsLoading(false);
     alert(`Error: ${response.status} - ${response.message}`);
     if (response.status === 401) {
+      setIsLogged(false);
       history.push('/');
     }
   };
@@ -50,6 +53,7 @@ function CreatePost() {
       >
         {isLoading ? 'Loading...' : 'Send'}
       </button>
+      <button type="button" onClick={() => history.push('/posts')}>Cancel</button>
     </div>
   );
 }
