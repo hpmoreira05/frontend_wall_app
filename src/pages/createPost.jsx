@@ -4,12 +4,17 @@ import AppContext from '../context/AppContext';
 import { createPost } from '../service/api';
 import Header from '../components/Header';
 import NotLogged from '../components/NotLogged';
+import Modal from '../components/Modal';
 
 function CreatePost() {
-  const { setIsLogged, isLogged } = useContext(AppContext);
+  const {
+    setIsLogged, isLogged, modalOpened, setModalOpened,
+  } = useContext(AppContext);
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState('');
+  const [redirectTo, setRedirectTo] = useState('');
 
   const history = useHistory();
 
@@ -17,16 +22,19 @@ function CreatePost() {
     setIsLoading(true);
     const response = await createPost(title, description);
     if (response.status === 201) {
-      alert(response.message);
+      setMessage(response.message);
+      setRedirectTo('/posts');
+      setModalOpened(true);
       setIsLoading(false);
-      history.push('/posts');
       return;
     }
     setIsLoading(false);
-    alert(`Error: ${response.status} - ${response.message}`);
+    setMessage(`Error: ${response.status} - ${response.message}`);
+    setRedirectTo('/createpost');
+    setModalOpened(true);
     if (response.status === 401) {
+      setRedirectTo('/');
       setIsLogged(false);
-      history.push('/');
     }
   };
 
@@ -59,6 +67,7 @@ function CreatePost() {
             {isLoading ? 'Loading...' : 'Send'}
           </button>
           <button type="button" onClick={() => history.push('/posts')}>Cancel</button>
+          {modalOpened ? <Modal message={message} redirect={redirectTo} /> : null}
         </>
       )}
     </div>
