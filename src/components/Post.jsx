@@ -3,7 +3,7 @@ import React from 'react';
 
 function Post({ post }) {
   const {
-    title, description, createdAt, userId, updatedAt,
+    title, description, createdAt, name, updatedAt,
   } = post;
 
   return (
@@ -17,7 +17,7 @@ function Post({ post }) {
       <div>
         Created by:
         {' '}
-        {userId}
+        {name}
       </div>
       {updatedAt ? (
         <div>
