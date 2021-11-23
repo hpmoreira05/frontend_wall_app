@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import AppContext from '../context/AppContext';
 import { createUser } from '../service/api';
+import Modal from './Modal';
 
 function Register() {
-  const { setSignInRendering } = useContext(AppContext);
+  const { setSignInRendering, setModalOpened, modalOpened } = useContext(AppContext);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -11,6 +12,7 @@ function Register() {
   const [error, setError] = useState('');
   const [clicked, setClicked] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
 
   const verifyName = () => {
     if (name === '') {
@@ -63,8 +65,8 @@ function Register() {
       return;
     }
     setLoading(false);
-    alert(fetchCreateUser.message);
-    setSignInRendering(true);
+    setMessage(fetchCreateUser.message);
+    setModalOpened(true);
   };
 
   useEffect(() => {
@@ -119,6 +121,7 @@ function Register() {
             {loading ? 'Loading...' : 'Create account'}
           </button>
         </div>
+        {modalOpened ? <Modal message={message} /> : null}
       </div>
     </section>
   );

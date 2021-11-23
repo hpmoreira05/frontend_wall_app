@@ -10,6 +10,7 @@ function AppProvider({ children }) {
   const [isLogged, setIsLogged] = useState(false);
   const [user, setUser] = useState('');
   const [userPosts, setUserPosts] = useState([]);
+  const [modalOpened, setModalOpened] = useState(false);
 
   const contextValue = {
     signInRendering,
@@ -22,6 +23,8 @@ function AppProvider({ children }) {
     setUser,
     userPosts,
     setUserPosts,
+    modalOpened,
+    setModalOpened,
   };
 
   return (
