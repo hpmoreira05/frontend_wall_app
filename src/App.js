@@ -8,6 +8,7 @@ import MyPosts from './pages/myPosts';
 import CreatePost from './pages/createPost';
 import UpdatePost from './pages/updatePost';
 import PageNotFound from './pages/pageNotFound';
+import './styles/index.css';
 
 function App() {
   return (
