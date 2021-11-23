@@ -11,6 +11,7 @@ function AppProvider({ children }) {
   const [user, setUser] = useState('');
   const [userPosts, setUserPosts] = useState([]);
   const [modalOpened, setModalOpened] = useState(false);
+  const [deletedPostMessage, setDeletedPostMessage] = useState(false);
 
   const contextValue = {
     signInRendering,
@@ -25,6 +26,8 @@ function AppProvider({ children }) {
     setUserPosts,
     modalOpened,
     setModalOpened,
+    deletedPostMessage,
+    setDeletedPostMessage,
   };
 
   return (

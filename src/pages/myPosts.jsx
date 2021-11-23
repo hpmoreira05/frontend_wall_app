@@ -4,9 +4,12 @@ import { getPostsByUser } from '../service/api';
 import MyPost from '../components/MyPost';
 import Header from '../components/Header';
 import NotLogged from '../components/NotLogged';
+import Modal from '../components/Modal';
 
 function MyPosts() {
-  const { userPosts, setUserPosts, isLogged } = useContext(AppContext);
+  const {
+    userPosts, setUserPosts, isLogged, modalOpened, deletedPostMessage,
+  } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchMyPosts = async () => {
@@ -32,8 +35,11 @@ function MyPosts() {
           {isLoading ? 'Loading...' : (
             <div>
               {userPosts.length > 0 ? (
-                userPosts.map((myPost) => <MyPost key={myPost.createdAt} myPost={myPost} />)
+                <div>
+                  {userPosts.map((myPost) => <MyPost key={myPost.createdAt} myPost={myPost} />)}
+                </div>
               ) : 'There are no posts yet. What about getting start? ;)'}
+              {modalOpened ? <Modal message={deletedPostMessage} /> : null}
             </div>
           )}
         </>

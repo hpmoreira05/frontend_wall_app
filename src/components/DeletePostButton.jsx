@@ -4,7 +4,9 @@ import AppContext from '../context/AppContext';
 import { deletePost } from '../service/api';
 
 function DeletePostButton({ id }) {
-  const { setUserPosts, userPosts } = useContext(AppContext);
+  const {
+    setUserPosts, userPosts, setDeletedPostMessage, setModalOpened,
+  } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchDeletePost = async () => {
@@ -12,11 +14,13 @@ function DeletePostButton({ id }) {
     if (response.status === 200) {
       const newUserPosts = userPosts.filter(({ _id }) => _id !== id);
       setUserPosts(newUserPosts);
-      alert(response.message);
+      setDeletedPostMessage(response.message);
+      setModalOpened(true);
       setIsLoading(false);
       return;
     }
-    alert(response.message);
+    setDeletedPostMessage(response.message);
+    setModalOpened(true);
     setIsLoading(false);
   };
 
