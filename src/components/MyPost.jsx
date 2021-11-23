@@ -14,8 +14,17 @@ function MyPost({ myPost }) {
     <div>
       <div>{title}</div>
       <div>{description}</div>
-      <div>{createdAt}</div>
-      <div>{updatedAt}</div>
+      <div>
+        Created at:
+        {' '}
+        {createdAt}
+      </div>
+      {updatedAt ? (
+        <div>
+          Updated at:
+          {updatedAt}
+        </div>
+      ) : null}
       <button type="button" onClick={() => history.push({ pathname: '/updatepost', state: { myPost } })}>Edit</button>
       <DeletePostButton id={_id} />
     </div>
