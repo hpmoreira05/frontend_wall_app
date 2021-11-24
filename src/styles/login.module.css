@@ -1,8 +1,10 @@
 .login{
   display: flex;
-  padding: 0 10%;
+  /* padding: 0 10%; */
   align-items: center;
   justify-content: space-between;
+  max-width: 1024px;
+  margin: 0 auto;
 }
 
 .login img{

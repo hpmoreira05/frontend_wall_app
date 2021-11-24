@@ -13,11 +13,10 @@ function SignIn() {
 
   const history = useHistory();
 
-  const verifyEmailAndPassword = () => {
+  const verifyEmail = () => {
     const reg = /\S+@\S+\.\S+/
       .test(email);
-    const minLenght = 6;
-    if (reg && password.length >= minLenght) {
+    if (reg) {
       return false;
     }
     return true;
@@ -64,7 +63,7 @@ function SignIn() {
         </label>
         <button
           type="button"
-          disabled={verifyEmailAndPassword()}
+          disabled={verifyEmail()}
           onClick={() => signIn()}
           className={styles.signInBttn}
         >

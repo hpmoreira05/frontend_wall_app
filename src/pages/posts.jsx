@@ -37,7 +37,7 @@ function Posts() {
             <div className="notFoundComponents">
               <img src={NoPostsAll} alt="trees" />
               <div>There is no posts yet, but you can create the first one.</div>
-              <div>Don&apos;t hide youtself, share your thoughts and knowledge with us!</div>
+              <div>Don&apos;t hide yourself, share your thoughts and knowledge with us!</div>
               <button type="button" onClick={() => history.push('/createpost')}>Write my first post</button>
             </div>
           )}
