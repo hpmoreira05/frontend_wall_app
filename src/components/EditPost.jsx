@@ -8,7 +8,7 @@ import Modal from './Modal';
 import styles from '../styles/createAndUpdatePost.module.css';
 
 function EditPost({ props }) {
-  const { modalOpened, setModalOpened } = useContext(AppContext);
+  const { modalOpened, setModalOpened, setIsLogged } = useContext(AppContext);
   const { location } = props;
   const { _id } = location.state.myPost;
   const [updatedTitle, setUpdatedTitle] = useState(location.state.myPost.title);
@@ -30,9 +30,13 @@ function EditPost({ props }) {
       return;
     }
     setIsLoading(false);
-    setMessage(`Error: ${response.status} - ${response.message}`);
+    setMessage(response.message);
     setRedirectTo('');
     setModalOpened(true);
+    if (response.status === 401) {
+      setRedirectTo('/');
+      setIsLogged(false);
+    }
   };
 
   return (

@@ -1,16 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import { getPostsByUser } from '../service/api';
 import MyPost from '../components/MyPost';
 import Header from '../components/Header';
 import NotLogged from '../components/NotLogged';
 import Modal from '../components/Modal';
+import NoPosts from '../images/noPosts.svg';
 
 function MyPosts() {
   const {
     userPosts, setUserPosts, isLogged, modalOpened, deletedPostMessage,
   } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(true);
+
+  const history = useHistory();
 
   const fetchMyPosts = async () => {
     const response = await getPostsByUser();
@@ -20,7 +24,7 @@ function MyPosts() {
       return;
     }
     setIsLoading(false);
-    alert(`Error: ${response.status} - ${response.posts.message}`);
+    alert(response.posts.message);
   };
 
   useEffect(() => {
@@ -38,7 +42,14 @@ function MyPosts() {
                 <div>
                   {userPosts.map((myPost) => <MyPost key={myPost.createdAt} myPost={myPost} />)}
                 </div>
-              ) : 'There are no posts yet. What about getting start? ;)'}
+              ) : (
+                <div className="notFoundComponents">
+                  <img src={NoPosts} alt="spaceship" />
+                  <div>Were your posts abducted or don&apos;t you have any yet?</div>
+                  <div>What about starting now?</div>
+                  <button type="button" onClick={() => history.push('/createpost')}>Write my first post</button>
+                </div>
+              )}
               {modalOpened ? <Modal message={deletedPostMessage} /> : null}
             </div>
           )}
