@@ -2,6 +2,7 @@
 import React, { useContext, useState } from 'react';
 import AppContext from '../context/AppContext';
 import { deletePost } from '../service/api';
+import styles from '../styles/Post.module.css';
 
 function DeletePostButton({ id }) {
   const {
@@ -25,7 +26,7 @@ function DeletePostButton({ id }) {
   };
 
   return (
-    <button type="button" onClick={() => fetchDeletePost()}>{isLoading ? 'Loading...' : 'Delete'}</button>
+    <button className={styles.deleteBttn} type="button" onClick={() => fetchDeletePost()}>{isLoading ? 'Loading...' : 'Delete'}</button>
   );
 }
 
