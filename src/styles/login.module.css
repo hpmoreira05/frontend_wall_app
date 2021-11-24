@@ -1,14 +1,10 @@
 .login{
   display: flex;
-  /* padding: 0 10%; */
   align-items: center;
   justify-content: space-between;
   max-width: 1024px;
   margin: 0 auto;
-}
-
-.login img{
-  margin-top: 98px;
+  height: calc(100vh - 85px);
 }
 
 .form{
@@ -56,12 +52,6 @@
 
 .createAccBttn{
   margin: 32px 0;
-}
-
-.error{
-  position: absolute;
-  color: red;
-  padding-top: 8px;
 }
 
 .spinner{

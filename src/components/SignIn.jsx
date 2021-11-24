@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import { login } from '../service/api';
 import styles from '../styles/login.module.css';
+import Warning from '../images/warning.svg';
 
 function SignIn() {
   const { setSignInRendering, setIsLogged, setUser } = useContext(AppContext);
@@ -67,6 +68,12 @@ function SignIn() {
             <Spinner color="primary" />
           </div>
         ) : null}
+        {error ? (
+          <div className="error">
+            <img src={Warning} alt="warning icon" />
+            <div>{ error }</div>
+          </div>
+        ) : null}
         <button
           type="button"
           disabled={verifyEmail()}
@@ -80,7 +87,6 @@ function SignIn() {
           {' '}
           <button type="button" onClick={() => setSignInRendering(false)} className={styles.signUpBttn}>Sign-up</button>
         </span>
-        {error ? <div>{error}</div> : null}
       </div>
     </section>
   );

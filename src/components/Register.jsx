@@ -4,6 +4,7 @@ import AppContext from '../context/AppContext';
 import { createUser } from '../service/api';
 import Modal from './Modal';
 import styles from '../styles/login.module.css';
+import Warning from '../images/warning.svg';
 
 function Register() {
   const { setSignInRendering, setModalOpened, modalOpened } = useContext(AppContext);
@@ -112,7 +113,12 @@ function Register() {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </label>
-        { clicked && <div className={styles.error}>{ error }</div> }
+        { clicked ? (
+          <div className="error">
+            <img src={Warning} alt="warning icon" />
+            <div>{ error }</div>
+          </div>
+        ) : null}
         {loading ? (
           <div className={styles.spinner}>
             <Spinner color="primary" />
