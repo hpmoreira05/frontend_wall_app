@@ -30,7 +30,7 @@ function CreatePost() {
       return;
     }
     setIsLoading(false);
-    setMessage(`Error: ${response.status} - ${response.message}`);
+    setMessage(response.message);
     setRedirectTo('');
     setModalOpened(true);
     if (response.status === 401) {

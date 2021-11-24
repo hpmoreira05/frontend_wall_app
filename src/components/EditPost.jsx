@@ -5,6 +5,7 @@ import AppContext from '../context/AppContext';
 import { updatePost } from '../service/api';
 import Header from './Header';
 import Modal from './Modal';
+import styles from '../styles/createAndUpdatePost.module.css';
 
 function EditPost({ props }) {
   const { modalOpened, setModalOpened } = useContext(AppContext);
@@ -37,7 +38,7 @@ function EditPost({ props }) {
   return (
     <div>
       <Header />
-      <div>
+      <div className={styles.container}>
         <label htmlFor="title">
           Title
           <input
@@ -57,13 +58,15 @@ function EditPost({ props }) {
             onChange={(e) => setUpdatedDescription(e.target.value)}
           />
         </label>
-        <button
-          type="button"
-          onClick={() => fetchUpdatePost()}
-        >
-          {isLoading ? 'Loading...' : 'Update'}
-        </button>
-        <button type="button" onClick={() => history.push('/posts')}>Cancel</button>
+        <div className={styles.buttons}>
+          <button className={styles.cancelBttn} type="button" onClick={() => history.push('/posts')}>Cancel</button>
+          <button
+            type="button"
+            onClick={() => fetchUpdatePost()}
+          >
+            {isLoading ? 'Loading...' : 'Update'}
+          </button>
+        </div>
       </div>
       {modalOpened ? <Modal message={message} redirect={redirectTo} /> : null}
     </div>
