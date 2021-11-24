@@ -5,6 +5,7 @@ import { createPost } from '../service/api';
 import Header from '../components/Header';
 import NotLogged from '../components/NotLogged';
 import Modal from '../components/Modal';
+import styles from '../styles/createAndUpdatePost.module.css';
 
 function CreatePost() {
   const {
@@ -43,31 +44,35 @@ function CreatePost() {
       {!isLogged ? <NotLogged /> : (
         <>
           <Header />
-          <label htmlFor="title">
-            Title
-            <input
-              type="text"
-              id="title"
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </label>
-          <label htmlFor="description">
-            Description
-            <textarea
-              rows="20"
-              cols="100"
-              id="description"
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </label>
-          <button
-            type="button"
-            onClick={() => fetchCreatePost()}
-          >
-            {isLoading ? 'Loading...' : 'Send'}
-          </button>
-          <button type="button" onClick={() => history.push('/posts')}>Cancel</button>
-          {modalOpened ? <Modal message={message} redirect={redirectTo} /> : null}
+          <div className={styles.container}>
+            <label htmlFor="title">
+              Title
+              <input
+                type="text"
+                id="title"
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </label>
+            <label htmlFor="description">
+              Description
+              <textarea
+                rows="20"
+                cols="100"
+                id="description"
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </label>
+            <div className={styles.buttons}>
+              <button className={styles.cancelBttn} type="button" onClick={() => history.push('/posts')}>Cancel</button>
+              <button
+                type="button"
+                onClick={() => fetchCreatePost()}
+              >
+                {isLoading ? 'Loading...' : 'Send'}
+              </button>
+            </div>
+            {modalOpened ? <Modal message={message} redirect={redirectTo} /> : null}
+          </div>
         </>
       )}
     </div>

@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import Ellipse from '../images/ellipse.svg';
+import styles from '../styles/Post.module.css';
 
 function Post({ post }) {
   const {
@@ -7,24 +9,33 @@ function Post({ post }) {
   } = post;
 
   return (
-    <div>
-      <div>{title}</div>
-      <div>{description}</div>
-      <div>
-        Created at:
-        {createdAt}
-      </div>
-      <div>
-        Created by:
-        {' '}
-        {name}
-      </div>
-      {updatedAt ? (
+    <div className={styles.post}>
+      <div className={styles.title}>{title}</div>
+      <div className={styles.info}>
         <div>
-          Updated at:
-          {updatedAt}
+          Created by:
+          {' '}
+          <span>{name}</span>
         </div>
-      ) : null}
+        <img src={Ellipse} alt="ellipse icon" />
+        <div>
+          Created at:
+          {' '}
+          <span>{createdAt}</span>
+        </div>
+        {updatedAt ? (
+          <>
+            <img src={Ellipse} alt="ellipse icon" />
+            <div>
+              Updated at:
+              {' '}
+              <span>{updatedAt}</span>
+            </div>
+          </>
+        ) : null}
+      </div>
+      <div className={styles.description}>{description}</div>
+      <hr className={styles.divider} />
     </div>
   );
 }

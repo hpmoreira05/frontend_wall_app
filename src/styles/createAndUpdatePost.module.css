@@ -1,0 +1,39 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  width: 904px;
+  margin: 0 auto;
+  margin-top: 42px;
+}
+
+.container label{
+  display: flex;
+  flex-direction: column;
+  width: 904px;
+  margin-top: 16px;
+}
+
+.container input, textarea{
+  margin-top: 8px;
+}
+
+.buttons{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 64px;
+}
+
+.cancelBttn{
+  border: none;
+  text-transform: none;
+  text-decoration: underline;
+  font-size: 16px;
+  padding: 0;
+  height: auto;
+  margin-right: 36px;
+}
+
+.cancelBttn:before{
+  transform: none;
+  background-image: none;
+}
