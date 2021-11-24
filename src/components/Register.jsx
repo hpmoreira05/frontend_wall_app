@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Spinner } from 'reactstrap';
 import AppContext from '../context/AppContext';
 import { createUser } from '../service/api';
 import Modal from './Modal';
@@ -112,8 +113,13 @@ function Register() {
           />
         </label>
         { clicked && <div className={styles.error}>{ error }</div> }
+        {loading ? (
+          <div className={styles.spinner}>
+            <Spinner color="primary" />
+          </div>
+        ) : null}
         <button type="submit" className={styles.createAccBttn} onClick={() => createAccount()}>
-          {loading ? 'Loading...' : 'Create account'}
+          Create account
         </button>
         <span>
           Already have an account?

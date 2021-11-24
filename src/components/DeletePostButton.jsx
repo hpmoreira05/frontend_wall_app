@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useContext, useState } from 'react';
+import { Spinner } from 'reactstrap';
 import AppContext from '../context/AppContext';
 import { deletePost } from '../service/api';
 import styles from '../styles/Post.module.css';
@@ -26,7 +27,7 @@ function DeletePostButton({ id }) {
   };
 
   return (
-    <button className={styles.deleteBttn} type="button" onClick={() => fetchDeletePost()}>{isLoading ? 'Loading...' : 'Delete'}</button>
+    <button className={styles.deleteBttn} type="button" onClick={() => fetchDeletePost()}>{isLoading ? <Spinner color="warning" /> : 'Delete'}</button>
   );
 }
 

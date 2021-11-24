@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Spinner } from 'reactstrap';
 import Header from '../components/Header';
 import Post from '../components/Post';
 import AppContext from '../context/AppContext';
@@ -31,7 +32,11 @@ function Posts() {
   return (
     <div>
       <Header />
-      {isLoading ? 'Loading...' : (
+      {isLoading ? (
+        <div className="spinner">
+          <Spinner color="primary" />
+        </div>
+      ) : (
         <div>
           {posts.length > 0 ? posts.map((post) => <Post key={post.createdAt} post={post} />) : (
             <div className="notFoundComponents">

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Spinner } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import { getPostsByUser } from '../service/api';
@@ -36,7 +37,11 @@ function MyPosts() {
       {!isLogged ? <NotLogged /> : (
         <>
           <Header />
-          {isLoading ? 'Loading...' : (
+          {isLoading ? (
+            <div className="spinner">
+              <Spinner color="primary" />
+            </div>
+          ) : (
             <div>
               {userPosts.length > 0 ? (
                 <div>

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Spinner } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import { login } from '../service/api';
@@ -61,13 +62,18 @@ function SignIn() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
+        {loading ? (
+          <div className={styles.spinner}>
+            <Spinner color="primary" />
+          </div>
+        ) : null}
         <button
           type="button"
           disabled={verifyEmail()}
           onClick={() => signIn()}
           className={styles.signInBttn}
         >
-          {loading ? 'Loading...' : 'Sign-In'}
+          Sign-In
         </button>
         <span>
           Dont have an account yet?

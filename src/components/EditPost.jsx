@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useContext, useState } from 'react';
+import { Spinner } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import { updatePost } from '../service/api';
@@ -42,36 +43,42 @@ function EditPost({ props }) {
   return (
     <div>
       <Header />
-      <div className={styles.container}>
-        <label htmlFor="title">
-          Title
-          <input
-            value={updatedTitle}
-            type="text"
-            id="title"
-            onChange={(e) => setUpdatedTitle(e.target.value)}
-          />
-        </label>
-        <label htmlFor="description">
-          Description
-          <textarea
-            value={updatedDescription}
-            rows="20"
-            cols="100"
-            id="description"
-            onChange={(e) => setUpdatedDescription(e.target.value)}
-          />
-        </label>
-        <div className={styles.buttons}>
-          <button className={styles.cancelBttn} type="button" onClick={() => history.push('/posts')}>Cancel</button>
-          <button
-            type="button"
-            onClick={() => fetchUpdatePost()}
-          >
-            {isLoading ? 'Loading...' : 'Update'}
-          </button>
+      {isLoading ? (
+        <div className="spinner">
+          <Spinner color="primary" />
         </div>
-      </div>
+      ) : (
+        <div className={styles.container}>
+          <label htmlFor="title">
+            Title
+            <input
+              value={updatedTitle}
+              type="text"
+              id="title"
+              onChange={(e) => setUpdatedTitle(e.target.value)}
+            />
+          </label>
+          <label htmlFor="description">
+            Description
+            <textarea
+              value={updatedDescription}
+              rows="10"
+              cols="100"
+              id="description"
+              onChange={(e) => setUpdatedDescription(e.target.value)}
+            />
+          </label>
+          <div className={styles.buttons}>
+            <button className={styles.cancelBttn} type="button" onClick={() => history.push('/posts')}>Cancel</button>
+            <button
+              type="button"
+              onClick={() => fetchUpdatePost()}
+            >
+              {isLoading ? 'Loading...' : 'Update'}
+            </button>
+          </div>
+        </div>
+      )}
       {modalOpened ? <Modal message={message} redirect={redirectTo} /> : null}
     </div>
   );
