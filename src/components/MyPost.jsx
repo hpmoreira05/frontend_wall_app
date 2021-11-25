@@ -39,7 +39,7 @@ function MyPost({ myPost }) {
         ) : null}
       </div>
       <div className={styles.description}>{description}</div>
-      <hr className={styles.divider} />
+      <div className={styles.divider} />
     </div>
   );
 }

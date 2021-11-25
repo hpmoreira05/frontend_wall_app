@@ -80,12 +80,12 @@ function SignIn() {
           onClick={() => signIn()}
           className={styles.signInBttn}
         >
-          Sign-In
+          Sign in
         </button>
         <span>
           Dont have an account yet?
           {' '}
-          <button type="button" onClick={() => setSignInRendering(false)} className={styles.signUpBttn}>Sign-up</button>
+          <button type="button" onClick={() => setSignInRendering(false)} className={styles.signUpBttn}>Sign up</button>
         </span>
       </div>
     </section>

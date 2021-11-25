@@ -8,6 +8,7 @@ import Header from '../components/Header';
 import NotLogged from '../components/NotLogged';
 import Modal from '../components/Modal';
 import NoPosts from '../images/noPosts.svg';
+import styles from '../styles/Post.module.css';
 
 function MyPosts() {
   const {
@@ -25,7 +26,6 @@ function MyPosts() {
       return;
     }
     setIsLoading(false);
-    alert(response.posts.message);
   };
 
   useEffect(() => {
@@ -42,7 +42,7 @@ function MyPosts() {
               <Spinner color="primary" />
             </div>
           ) : (
-            <div>
+            <div className={styles.allPosts}>
               {userPosts.length > 0 ? (
                 <div>
                   {userPosts.sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt))

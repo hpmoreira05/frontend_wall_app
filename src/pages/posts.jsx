@@ -6,6 +6,7 @@ import Post from '../components/Post';
 import AppContext from '../context/AppContext';
 import { getAllPosts } from '../service/api';
 import NoPostsAll from '../images/noPostsAll.svg';
+import styles from '../styles/Post.module.css';
 
 function Posts() {
   const { setPosts, posts } = useContext(AppContext);
@@ -37,7 +38,7 @@ function Posts() {
           <Spinner color="primary" />
         </div>
       ) : (
-        <div>
+        <div className={styles.allPosts}>
           {posts.length > 0 ? posts
             .sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt))
             .map((post) => <Post key={post.createdAt} post={post} />) : (
