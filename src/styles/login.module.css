@@ -69,6 +69,7 @@
 
   .login{
     justify-content: center;
+    padding-top: 32px;
   }
 
   .form label{
