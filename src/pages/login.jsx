@@ -12,7 +12,9 @@ function Login() {
     <div>
       <Header />
       <div className={styles.login}>
-        <img src={MainImage} alt="wall app mobile version" />
+        <div className={styles.mainImage}>
+          <img src={MainImage} alt="wall app mobile version" />
+        </div>
         {signInRendering ? <SignIn /> : <Register />}
       </div>
     </div>

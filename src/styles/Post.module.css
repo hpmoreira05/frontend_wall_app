@@ -70,3 +70,14 @@
 .allPosts{
   margin-top: 40px;
 }
+
+
+@media (max-width: 576px){
+  .post{
+    width: 358px;
+  }
+
+  .title{
+    width: 347px;
+  }
+}

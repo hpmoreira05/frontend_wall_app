@@ -4,7 +4,11 @@
   justify-content: space-between;
   max-width: 1024px;
   margin: 0 auto;
-  height: calc(100vh - 85px);
+}
+
+.mainImage{
+  margin-top: 98px;
+  height: calc(100vh - 85px - 98px);
 }
 
 .form{
@@ -56,4 +60,18 @@
 
 .spinner{
   margin-top: 32px;
+}
+
+@media (max-width: 576px){
+  .mainImage{
+    display: none;
+  }
+
+  .login{
+    justify-content: center;
+  }
+
+  .form label{
+    width: 356px;
+  }
 }
