@@ -27,3 +27,11 @@
   font-weight: 700;
   margin-bottom: 48px;
 }
+
+@media (max-width: 576px){
+  .secondContainer{
+    width: 80%;
+    height: 35%;
+    padding: 0 12px;
+  }
+}

@@ -80,4 +80,16 @@
   .title{
     width: 347px;
   }
+
+  .info, .container{
+    flex-direction: column;
+  }
+
+  .info img{
+    display: none;
+  }
+
+  .updateBttn{
+    margin-left: 0;
+  }
 }

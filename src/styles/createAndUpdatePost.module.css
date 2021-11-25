@@ -37,3 +37,13 @@
   transform: none;
   background-image: none;
 }
+
+@media (max-width: 576px){
+  .container{
+    width: 356px;
+  }
+
+  .container label{
+    width: 356px;
+  }
+}
