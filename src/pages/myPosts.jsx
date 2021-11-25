@@ -45,7 +45,8 @@ function MyPosts() {
             <div>
               {userPosts.length > 0 ? (
                 <div>
-                  {userPosts.map((myPost) => <MyPost key={myPost.createdAt} myPost={myPost} />)}
+                  {userPosts.sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt))
+                    .map((myPost) => <MyPost key={myPost.createdAt} myPost={myPost} />)}
                 </div>
               ) : (
                 <div className="notFoundComponents">

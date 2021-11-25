@@ -13,7 +13,6 @@ function Register() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  // const [clicked, setClicked] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -56,7 +55,6 @@ function Register() {
   };
 
   const createAccount = async () => {
-    // setClicked(true);
     if (!verifyName()) return;
     if (!verifyEmail()) return;
     if (!verifyPassword()) return;
@@ -73,7 +71,6 @@ function Register() {
   };
 
   useEffect(() => {
-    // setClicked(false);
     setError('');
   }, [name, email, password, confirmPassword]);
 

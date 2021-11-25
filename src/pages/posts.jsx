@@ -38,13 +38,15 @@ function Posts() {
         </div>
       ) : (
         <div>
-          {posts.length > 0 ? posts.map((post) => <Post key={post.createdAt} post={post} />) : (
-            <div className="notFoundComponents">
-              <img src={NoPostsAll} alt="trees" />
-              <div>There is no posts yet, but you can create the first one.</div>
-              <div>Don&apos;t hide yourself, share your thoughts and knowledge with us!</div>
-              <button type="button" onClick={() => history.push('/createpost')}>Write my first post</button>
-            </div>
+          {posts.length > 0 ? posts
+            .sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt))
+            .map((post) => <Post key={post.createdAt} post={post} />) : (
+              <div className="notFoundComponents">
+                <img src={NoPostsAll} alt="trees" />
+                <div>There is no posts yet, but you can create the first one.</div>
+                <div>Don&apos;t hide yourself, share your thoughts and knowledge with us!</div>
+                <button type="button" onClick={() => history.push('/createpost')}>Write my first post</button>
+              </div>
           )}
 
         </div>
