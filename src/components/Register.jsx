@@ -13,7 +13,7 @@ function Register() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  const [clicked, setClicked] = useState(false);
+  // const [clicked, setClicked] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -56,7 +56,7 @@ function Register() {
   };
 
   const createAccount = async () => {
-    setClicked(true);
+    // setClicked(true);
     if (!verifyName()) return;
     if (!verifyEmail()) return;
     if (!verifyPassword()) return;
@@ -73,7 +73,7 @@ function Register() {
   };
 
   useEffect(() => {
-    setClicked(false);
+    // setClicked(false);
     setError('');
   }, [name, email, password, confirmPassword]);
 
@@ -113,7 +113,7 @@ function Register() {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </label>
-        { clicked ? (
+        { error ? (
           <div className="error">
             <img src={Warning} alt="warning icon" />
             <div>{ error }</div>
