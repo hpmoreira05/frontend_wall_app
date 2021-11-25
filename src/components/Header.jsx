@@ -19,11 +19,13 @@ function Header() {
 
   const signIn = () => {
     setSignInRendering(true);
+    setIsOpened(false);
     history.push('/');
   };
 
   const signUp = () => {
     setSignInRendering(false);
+    setIsOpened(false);
     history.push('/');
   };
 
@@ -98,7 +100,7 @@ function Header() {
           <div>
             {!isLogged ? (
               <div className={styles.mobile}>
-                <Link to="/posts" className={styles.link}>ALL POSTS</Link>
+                <Link to="/posts" className={styles.link}>All posts</Link>
                 <hr className={styles.divider} />
                 <button type="button" onClick={() => signIn()} className={styles.signIn}>Sign In</button>
                 <button type="button" onClick={() => signUp()}>Sign up</button>
@@ -109,8 +111,8 @@ function Header() {
                   <img src={userAvatar} alt="user avatar" />
                   <span>{user}</span>
                 </div>
-                <Link to="/posts" className={styles.link}>ALL POSTS</Link>
-                <Link to="/posts/mine">MY POSTS</Link>
+                <Link to="/posts" className={styles.link}>All posts</Link>
+                <Link to="/posts/mine">My posts</Link>
                 {path !== '/createpost' ? <button type="button" onClick={() => history.push('/createpost')}>Add new post</button> : null}
                 <hr className={styles.divider} />
                 <button type="button" onClick={() => logout()}>Sign out</button>

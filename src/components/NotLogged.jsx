@@ -12,7 +12,7 @@ function NotLogged() {
       <div className="notFoundComponents">
         <img src={NotLoggedImg} alt="not logged" />
         <div>You need to sign in to access this page.</div>
-        <button type="button" onClick={() => history.push('/')}>Back</button>
+        <button type="button" onClick={() => history.push('/')}>Sign in</button>
       </div>
     </div>
   );
