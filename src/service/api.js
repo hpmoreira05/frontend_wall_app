@@ -31,7 +31,7 @@ export const login = async (email, password) => {
   };
 
   try {
-    const request = await fetch(`${URL}/login`, requestOptions);
+    const request = await fetch(`${URL}/users/login`, requestOptions);
     const response = await request.json();
     return {
       message: response.token || response.message,
