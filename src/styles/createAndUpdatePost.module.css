@@ -40,10 +40,14 @@
 
 @media (max-width: 576px){
   .container{
-    width: 356px;
+    width: 90%;
   }
 
   .container label{
-    width: 356px;
+    width: 100%;
+  }
+
+  .buttons{
+    margin-bottom: 32px;
   }
 }

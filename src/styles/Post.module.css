@@ -74,11 +74,11 @@
 
 @media (max-width: 576px){
   .post{
-    width: 358px;
+    width: 90%;
   }
 
   .title{
-    width: 347px;
+    width: 90%;
   }
 
   .info, .container{
