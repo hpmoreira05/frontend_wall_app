@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import styles from '../styles/Header.module.css';
@@ -6,6 +6,7 @@ import Logo from '../images/logo.svg';
 import userAvatar from '../images/userAvatar.svg';
 import SanduichButton from '../images/sanduich.svg';
 import CloseButton from '../images/close.svg';
+import { validation } from '../service/api';
 
 function Header() {
   const {
@@ -16,6 +17,20 @@ function Header() {
   const [isOpened, setIsOpened] = useState(false);
 
   const path = history.location.pathname;
+
+  const userValidation = async () => {
+    const response = await validation();
+    if (response.status === 200) {
+      setUser(response.message);
+      setIsLogged(true);
+      return;
+    }
+    setIsLogged(false);
+  };
+
+  useEffect(() => {
+    userValidation();
+  }, []);
 
   const signIn = () => {
     setSignInRendering(true);

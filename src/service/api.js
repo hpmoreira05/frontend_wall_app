@@ -119,3 +119,18 @@ export const deletePost = async (id) => {
     return err;
   }
 };
+
+export const validation = async () => {
+  const token = localStorage.getItem('token');
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-type': 'application/json', Authorization: `${token}` },
+  };
+  try {
+    const request = await fetch(`${URL}/users/validation`, requestOptions);
+    const response = await request.json();
+    return { message: response.message, status: request.status };
+  } catch (err) {
+    return err;
+  }
+};
