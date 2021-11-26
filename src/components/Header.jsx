@@ -40,7 +40,9 @@ function Header() {
   return (
     <>
       <div className={styles.header}>
-        <img src={Logo} alt="logo" />
+        <Link to="/posts">
+          <img src={Logo} alt="logo" />
+        </Link>
         {isLogged ? (
           <>
             <div className={styles.loggedHeader}>
