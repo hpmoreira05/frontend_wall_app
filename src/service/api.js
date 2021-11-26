@@ -1,3 +1,6 @@
+const PORT = process.env.REACT_APP_PORT;
+const URL = `http://localhost:${PORT}`;
+
 export const createUser = async (name, email, password) => {
   const requestOptions = {
     method: 'POST',
@@ -9,7 +12,7 @@ export const createUser = async (name, email, password) => {
     }),
   };
   try {
-    const request = await fetch('http://localhost:3000/users', requestOptions);
+    const request = await fetch(`${URL}/users`, requestOptions);
     const response = await request.json();
     return { message: response.message, status: request.status };
   } catch (err) {
@@ -28,9 +31,12 @@ export const login = async (email, password) => {
   };
 
   try {
-    const request = await fetch('http://localhost:3000/login', requestOptions);
+    const request = await fetch(`${URL}/login`, requestOptions);
     const response = await request.json();
-    return { message: response.token || response.message, status: request.status };
+    return {
+      message: response.token || response.message,
+      status: request.status,
+    };
   } catch (err) {
     return err;
   }
@@ -47,7 +53,7 @@ export const createPost = async (title, description) => {
     }),
   };
   try {
-    const request = await fetch('http://localhost:3000/posts', requestOptions);
+    const request = await fetch(`${URL}/posts`, requestOptions);
     const response = await request.json();
     return { message: response.message, status: request.status };
   } catch (err) {
@@ -57,7 +63,7 @@ export const createPost = async (title, description) => {
 
 export const getAllPosts = async () => {
   try {
-    const request = await fetch('http://localhost:3000/posts');
+    const request = await fetch(`${URL}/posts`);
     const response = await request.json();
     return { posts: response, status: request.status };
   } catch (err) {
@@ -72,7 +78,7 @@ export const getPostsByUser = async () => {
     headers: { 'Content-type': 'application/json', Authorization: `${token}` },
   };
   try {
-    const request = await fetch('http://localhost:3000/posts/myposts', requestOptions);
+    const request = await fetch(`${URL}/posts/myposts`, requestOptions);
     const response = await request.json();
     return { posts: response, status: request.status };
   } catch (err) {
@@ -91,7 +97,7 @@ export const updatePost = async (title, description, id) => {
     }),
   };
   try {
-    const request = await fetch(`http://localhost:3000/posts/${id}`, requestOptions);
+    const request = await fetch(`${URL}/posts/${id}`, requestOptions);
     const response = await request.json();
     return { message: response.message, status: request.status };
   } catch (err) {
@@ -106,7 +112,7 @@ export const deletePost = async (id) => {
     headers: { 'Content-type': 'application/json', Authorization: `${token}` },
   };
   try {
-    const request = await fetch(`http://localhost:3000/posts/${id}`, requestOptions);
+    const request = await fetch(`${URL}/posts/${id}`, requestOptions);
     const response = await request.json();
     return { message: response.message, status: request.status };
   } catch (err) {
