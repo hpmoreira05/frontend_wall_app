@@ -2,12 +2,12 @@
 /* eslint-disable react/react-in-jsx-scope */
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Login from './pages/login';
-import Posts from './pages/posts';
-import MyPosts from './pages/myPosts';
-import CreatePost from './pages/createPost';
-import UpdatePost from './pages/updatePost';
-import PageNotFound from './pages/pageNotFound';
+import Login from './pages/Login';
+import Posts from './pages/Posts';
+import MyPosts from './pages/MyPosts';
+import CreatePost from './pages/CreatePost';
+import UpdatePost from './pages/UpdatePost';
+import PageNotFound from './pages/PageNotFound';
 import './styles/index.css';
 
 function App() {
