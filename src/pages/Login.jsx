@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-filename-extension */
 import React, { useContext } from 'react';
 import Header from '../components/Header';
 import Register from '../components/Register';
