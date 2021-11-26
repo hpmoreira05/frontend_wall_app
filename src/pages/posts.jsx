@@ -4,16 +4,31 @@ import { Spinner } from 'reactstrap';
 import Header from '../components/Header';
 import Post from '../components/Post';
 import AppContext from '../context/AppContext';
-import { getAllPosts } from '../service/api';
+import { getAllPosts, validation } from '../service/api';
 import NoPostsAll from '../images/noPostsAll.svg';
 import styles from '../styles/Post.module.css';
 
 function Posts() {
-  const { setPosts, posts } = useContext(AppContext);
+  const {
+    setPosts, posts, isLogged, setUser, setIsLogged,
+  } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
 
   const history = useHistory();
+
+  const userValidation = async () => {
+    const token = localStorage.getItem('token');
+    if (!isLogged && token) {
+      const response = await validation();
+      if (response.status === 200) {
+        setUser(response.message);
+        setIsLogged(true);
+        return;
+      }
+      setIsLogged(false);
+    }
+  };
 
   const fetchPosts = async () => {
     const response = await getAllPosts();
@@ -27,6 +42,7 @@ function Posts() {
   };
 
   useEffect(() => {
+    userValidation();
     fetchPosts();
   }, []);
 
