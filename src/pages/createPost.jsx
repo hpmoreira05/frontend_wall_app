@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Spinner } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
-import { createPost } from '../service/api';
+import { createPost, validation } from '../service/api';
 import Header from '../components/Header';
 import NotLogged from '../components/NotLogged';
 import Modal from '../components/Modal';
@@ -10,7 +10,7 @@ import styles from '../styles/createAndUpdatePost.module.css';
 
 function CreatePost() {
   const {
-    setIsLogged, isLogged, modalOpened, setModalOpened,
+    setIsLogged, isLogged, modalOpened, setModalOpened, setUser,
   } = useContext(AppContext);
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
@@ -19,6 +19,22 @@ function CreatePost() {
   const [redirectTo, setRedirectTo] = useState('');
 
   const history = useHistory();
+
+  const userValidation = async () => {
+    if (!isLogged) {
+      const response = await validation();
+      if (response.status === 200) {
+        setUser(response.message);
+        setIsLogged(true);
+        return;
+      }
+      setIsLogged(false);
+    }
+  };
+
+  useEffect(() => {
+    userValidation();
+  }, []);
 
   const fetchCreatePost = async () => {
     setIsLoading(true);
