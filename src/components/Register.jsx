@@ -121,7 +121,7 @@ function Register() {
             <Spinner color="primary" />
           </div>
         ) : null}
-        <button type="submit" className={styles.createAccBttn} onClick={() => createAccount()}>
+        <button type="button" className={styles.createAccBttn} onClick={() => createAccount()}>
           Create account
         </button>
         <span>

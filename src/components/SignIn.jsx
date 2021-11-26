@@ -83,7 +83,7 @@ function SignIn() {
           Sign in
         </button>
         <span>
-          Dont have an account yet?
+          Don&apos;t have an account yet?
           {' '}
           <button type="button" onClick={() => setSignInRendering(false)} className={styles.signUpBttn}>Sign up</button>
         </span>
