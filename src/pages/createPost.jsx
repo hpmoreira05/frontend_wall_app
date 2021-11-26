@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import { createPost, validation } from '../service/api';
 import Header from '../components/Header';
-import NotLogged from '../components/NotLogged';
 import Modal from '../components/Modal';
 import styles from '../styles/createAndUpdatePost.module.css';
 
@@ -29,6 +28,7 @@ function CreatePost() {
         return;
       }
       setIsLogged(false);
+      history.push('/unauthorized');
     }
   };
 
@@ -58,45 +58,41 @@ function CreatePost() {
 
   return (
     <div>
-      {!isLogged ? <NotLogged /> : (
-        <>
-          <Header />
-          {isLoading ? (
-            <div className="spinner">
-              <Spinner color="primary" />
-            </div>
-          ) : (
-            <div className={styles.container}>
-              <label htmlFor="title">
-                Title
-                <input
-                  type="text"
-                  id="title"
-                  onChange={(e) => setTitle(e.target.value)}
-                />
-              </label>
-              <label htmlFor="description">
-                Description
-                <textarea
-                  rows="10"
-                  cols="100"
-                  id="description"
-                  onChange={(e) => setDescription(e.target.value)}
-                />
-              </label>
-              <div className={styles.buttons}>
-                <button className={styles.cancelBttn} type="button" onClick={() => history.push('/posts')}>Cancel</button>
-                <button
-                  type="button"
-                  onClick={() => fetchCreatePost()}
-                >
-                  Send
-                </button>
-              </div>
-              {modalOpened ? <Modal message={message} redirect={redirectTo} /> : null}
-            </div>
-          )}
-        </>
+      <Header />
+      {isLoading ? (
+        <div className="spinner">
+          <Spinner color="primary" />
+        </div>
+      ) : (
+        <div className={styles.container}>
+          <label htmlFor="title">
+            Title
+            <input
+              type="text"
+              id="title"
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </label>
+          <label htmlFor="description">
+            Description
+            <textarea
+              rows="10"
+              cols="100"
+              id="description"
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </label>
+          <div className={styles.buttons}>
+            <button className={styles.cancelBttn} type="button" onClick={() => history.push('/posts')}>Cancel</button>
+            <button
+              type="button"
+              onClick={() => fetchCreatePost()}
+            >
+              Send
+            </button>
+          </div>
+          {modalOpened ? <Modal message={message} redirect={redirectTo} /> : null}
+        </div>
       )}
     </div>
   );

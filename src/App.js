@@ -8,6 +8,7 @@ import MyPosts from './pages/MyPosts';
 import CreatePost from './pages/CreatePost';
 import UpdatePost from './pages/UpdatePost';
 import PageNotFound from './pages/PageNotFound';
+import Unauthorized from './pages/Unauthorized';
 import './styles/index.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Route exact path="/posts/mine" component={MyPosts} />
       <Route exact path="/createpost" component={CreatePost} />
       <Route exact path="/updatepost" component={UpdatePost} />
+      <Route exact path="/unauthorized" component={Unauthorized} />
       <Route component={PageNotFound} />
     </Switch>
   );

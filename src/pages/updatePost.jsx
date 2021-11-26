@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
-import NotLogged from '../components/NotLogged';
 import EditPost from '../components/EditPost';
 import { validation } from '../service/api';
 
 function UpdatePost(props) {
   const { isLogged, setUser, setIsLogged } = useContext(AppContext);
+
+  const history = useHistory();
 
   const userValidation = async () => {
     if (!isLogged) {
@@ -17,6 +19,7 @@ function UpdatePost(props) {
         return;
       }
       setIsLogged(false);
+      history.push('/unauthorized');
     }
   };
 
@@ -26,7 +29,7 @@ function UpdatePost(props) {
 
   return (
     <div>
-      {!isLogged ? <NotLogged /> : <EditPost props={props} />}
+      {isLogged ? <EditPost props={props} /> : null}
     </div>
   );
 }
