@@ -1,5 +1,4 @@
-const PORT = process.env.REACT_APP_PORT || 8080;
-const URL = `http://localhost:${PORT}`;
+const URL = process.env.REACT_APP_URL;
 
 export const createUser = async (name, email, password) => {
   const requestOptions = {
