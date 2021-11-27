@@ -24,7 +24,8 @@ function SignIn() {
     return true;
   };
 
-  const signIn = async () => {
+  const signIn = async (event) => {
+    event.preventDefault();
     setLoading(true);
     const token = await login(email, password);
     if (token.status !== 200) {
@@ -47,41 +48,42 @@ function SignIn() {
     <section>
       <div className={styles.form}>
         <h2>Welcome back</h2>
-        <label htmlFor="emailLogin">
-          E-mail
-          <input
-            type="email"
-            id="emailLogin"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <label htmlFor="passwordLogin">
-          Password
-          <input
-            type="password"
-            id="passwordLogin"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        {loading ? (
-          <div className={styles.spinner}>
-            <Spinner color="primary" />
-          </div>
-        ) : null}
-        {error ? (
-          <div className="error">
-            <img src={Warning} alt="warning icon" />
-            <div>{ error }</div>
-          </div>
-        ) : null}
-        <button
-          type="button"
-          disabled={verifyEmail()}
-          onClick={() => signIn()}
-          className={styles.signInBttn}
-        >
-          Sign in
-        </button>
+        <form onSubmit={signIn} className={styles.form}>
+          <label htmlFor="emailLogin">
+            E-mail
+            <input
+              type="email"
+              id="emailLogin"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+          <label htmlFor="passwordLogin">
+            Password
+            <input
+              type="password"
+              id="passwordLogin"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+          {loading ? (
+            <div className={styles.spinner}>
+              <Spinner color="primary" />
+            </div>
+          ) : null}
+          {error ? (
+            <div className="error">
+              <img src={Warning} alt="warning icon" />
+              <div>{ error }</div>
+            </div>
+          ) : null}
+          <button
+            type="submit"
+            disabled={verifyEmail()}
+            className={styles.signInBttn}
+          >
+            Sign in
+          </button>
+        </form>
         <span>
           Don&apos;t have an account yet?
           {' '}
