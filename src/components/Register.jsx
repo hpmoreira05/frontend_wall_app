@@ -54,7 +54,8 @@ function Register() {
     return true;
   };
 
-  const createAccount = async () => {
+  const createAccount = async (event) => {
+    event.preventDefault();
     if (!verifyName()) return;
     if (!verifyEmail()) return;
     if (!verifyPassword()) return;
@@ -78,52 +79,54 @@ function Register() {
     <section>
       <div className={styles.form}>
         <h2>Create your account</h2>
-        <label htmlFor="name">
-          Name
-          <input
-            id="name"
-            type="text"
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <label htmlFor="email">
-          E-mail
-          <input
-            id="email"
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <label htmlFor="password">
-          Password
-          <input
-            id="password"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <label htmlFor="confirmPassword">
-          Re-enter password
-          <input
-            id="confirmPassword"
-            type="password"
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </label>
-        { error ? (
-          <div className="error">
-            <img src={Warning} alt="warning icon" />
-            <div>{ error }</div>
-          </div>
-        ) : null}
-        {loading ? (
-          <div className={styles.spinner}>
-            <Spinner color="primary" />
-          </div>
-        ) : null}
-        <button type="button" className={styles.createAccBttn} onClick={() => createAccount()}>
-          Create account
-        </button>
+        <form onSubmit={createAccount} className={styles.form}>
+          <label htmlFor="name">
+            Name
+            <input
+              id="name"
+              type="text"
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
+          <label htmlFor="email">
+            E-mail
+            <input
+              id="email"
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+          <label htmlFor="password">
+            Password
+            <input
+              id="password"
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+          <label htmlFor="confirmPassword">
+            Re-enter password
+            <input
+              id="confirmPassword"
+              type="password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </label>
+          { error ? (
+            <div className="error">
+              <img src={Warning} alt="warning icon" />
+              <div>{ error }</div>
+            </div>
+          ) : null}
+          {loading ? (
+            <div className={styles.spinner}>
+              <Spinner color="primary" />
+            </div>
+          ) : null}
+          <button type="submit" className={styles.createAccBttn}>
+            Create account
+          </button>
+        </form>
         <span>
           Already have an account?
           {' '}
