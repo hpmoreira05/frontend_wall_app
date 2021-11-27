@@ -5,6 +5,11 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 10%;
+  overflow: hidden;
+  position: fixed; 
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 .signIn{
@@ -25,6 +30,11 @@
   font-size: 12px;
   line-height: 18px;
   padding: 0;
+}
+
+.userInfo button::before, .signIn:before{
+  transform: none;
+  background-image: none;
 }
 
 .userInfo img{
@@ -130,6 +140,8 @@
     width: 100%;
     z-index: 1;
     border-bottom: 2px solid #4A7BFF;
+    position: fixed;
+    top: 85px;
   }
 
   .mobile > *{

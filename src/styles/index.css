@@ -4,6 +4,7 @@ body{
   background-color: #171717;
   color: #FFFFFF;
   font-family: 'Roboto', sans-serif;
+	padding-top: 85px;
 }
 
 button {
@@ -95,12 +96,16 @@ input, textarea{
 
 @media (max-width: 576px){
 	.notFoundComponents img{
-		width: 300px;
+		width: 75%;
 	}
 
 	.notFoundComponents div{
 		padding: 0 16px;
 		text-align: center;
+	}
+
+	.notFoundComponents button{
+		margin-bottom: 36px;
 	}
 
 	a{
