@@ -36,7 +36,8 @@ function CreatePost() {
     userValidation();
   }, []);
 
-  const fetchCreatePost = async () => {
+  const fetchCreatePost = async (event) => {
+    event.preventDefault();
     setIsLoading(true);
     const response = await createPost(title, description);
     if (response.status === 201) {
@@ -64,7 +65,7 @@ function CreatePost() {
           <Spinner color="primary" />
         </div>
       ) : (
-        <div className={styles.container}>
+        <form className={styles.container} onSubmit={fetchCreatePost}>
           <label htmlFor="title">
             Title
             <input
@@ -85,14 +86,13 @@ function CreatePost() {
           <div className={styles.buttons}>
             <button className={styles.cancelBttn} type="button" onClick={() => history.push('/posts')}>Cancel</button>
             <button
-              type="button"
-              onClick={() => fetchCreatePost()}
+              type="submit"
             >
               Send
             </button>
           </div>
           {modalOpened ? <Modal message={message} redirect={redirectTo} /> : null}
-        </div>
+        </form>
       )}
     </div>
   );

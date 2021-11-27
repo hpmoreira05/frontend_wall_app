@@ -21,7 +21,8 @@ function EditPost({ props }) {
 
   const history = useHistory();
 
-  const fetchUpdatePost = async () => {
+  const fetchUpdatePost = async (event) => {
+    event.preventDefault();
     const response = await updatePost(updatedTitle, updatedDescription, _id);
     if (response.status === 200) {
       setMessage(response.message);
@@ -48,7 +49,7 @@ function EditPost({ props }) {
           <Spinner color="primary" />
         </div>
       ) : (
-        <div className={styles.container}>
+        <form className={styles.container} onSubmit={fetchUpdatePost}>
           <label htmlFor="title">
             Title
             <input
@@ -71,13 +72,12 @@ function EditPost({ props }) {
           <div className={styles.buttons}>
             <button className={styles.cancelBttn} type="button" onClick={() => history.push('/posts')}>Cancel</button>
             <button
-              type="button"
-              onClick={() => fetchUpdatePost()}
+              type="submit"
             >
               {isLoading ? 'Loading...' : 'Update'}
             </button>
           </div>
-        </div>
+        </form>
       )}
       {modalOpened ? <Modal message={message} redirect={redirectTo} /> : null}
     </div>
