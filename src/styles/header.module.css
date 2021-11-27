@@ -38,7 +38,8 @@
 }
 
 .userInfo img{
-  padding: 0 12px;
+  padding-left: 12px;
+  margin: 0 12px;
 }
 
 .loggedHeader{
