@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { Spinner } from 'reactstrap';
 import AppContext from '../context/AppContext';
 import { deletePost } from '../service/api';
-import styles from '../styles/Post.module.css';
+import styles from '../styles/post.module.css';
 
 function DeletePostButton({ id }) {
   const {

@@ -7,7 +7,7 @@ import MyPost from '../components/MyPost';
 import Header from '../components/Header';
 import Modal from '../components/Modal';
 import NoPosts from '../images/noPosts.svg';
-import styles from '../styles/Post.module.css';
+import styles from '../styles/post.module.css';
 
 function MyPosts() {
   const {

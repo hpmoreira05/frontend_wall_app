@@ -3,7 +3,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import DeletePostButton from './DeletePostButton';
 import Ellipse from '../images/ellipse.svg';
-import styles from '../styles/Post.module.css';
+import styles from '../styles/post.module.css';
 
 function MyPost({ myPost }) {
   const {

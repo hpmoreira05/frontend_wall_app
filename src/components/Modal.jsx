@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
-import styles from '../styles/Modal.module.css';
+import styles from '../styles/modal.module.css';
 
 function Modal({ message, redirect }) {
   const { setModalOpened, setSignInRendering } = useContext(AppContext);

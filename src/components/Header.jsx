@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
-import styles from '../styles/Header.module.css';
+import styles from '../styles/header.module.css';
 import Logo from '../images/logo.svg';
 import userAvatar from '../images/userAvatar.svg';
 import SanduichButton from '../images/sanduich.svg';

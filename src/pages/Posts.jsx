@@ -6,7 +6,7 @@ import Post from '../components/Post';
 import AppContext from '../context/AppContext';
 import { getAllPosts, validation } from '../service/api';
 import NoPostsAll from '../images/noPostsAll.svg';
-import styles from '../styles/Post.module.css';
+import styles from '../styles/post.module.css';
 
 function Posts() {
   const {

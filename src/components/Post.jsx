@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import Ellipse from '../images/ellipse.svg';
-import styles from '../styles/Post.module.css';
+import styles from '../styles/post.module.css';
 
 function Post({ post }) {
   const {
