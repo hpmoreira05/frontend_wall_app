@@ -36,11 +36,12 @@ REACT_APP_URL=http://localhost:5000
 4. Start the project
 - `npm start`
 
-## 📹 Demo
 
-<img src="./public/medias/desktop.gif" width="90%"/>
+## 🖌️ Design
+
+The design was created with `Figma`. You can check it out accessing this link: [The Wall App design](https://www.figma.com/file/cv3HznqzVOpfnmpRme3UXO/WallApp?node-id=136%3A202)
 
 ## :cloud: Deployment
 Host: [Heroku](https://www.heroku.com)
 
-You can access The Wall App using your computer or your mobile from here: [The Wall App API](https://wall-app-hpmoreira05-back.herokuapp.com/)
+You can access The Wall App using your computer or your mobile from here: [The Wall App](https://wall-app-hpmoreira05-back.herokuapp.com/)
