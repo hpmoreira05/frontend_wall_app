@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import AppContext from './AppContext';
 
 function AppProvider({ children }) {
@@ -36,9 +35,5 @@ function AppProvider({ children }) {
     </AppContext.Provider>
   );
 }
-
-AppProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default AppProvider;
