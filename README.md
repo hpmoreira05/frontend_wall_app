@@ -8,17 +8,16 @@
 
 Wall App is an application that allows users to register, login, and write on a wall. They can also edit and delete posts.
 
+
 ## :computer: What's included?
 
-- React
-- JavaScript
-- Bootstrap
-- CSS
+A front end web app created with React.js styled with CSS and Bootstrap that uses [The Wall App API](https://github.com/hpmoreira05/backend_wall_app/) as backend.
 
-## :vertical_traffic_light: How to use it?
+## :warning:  Prerequisites and global dependencies
 
-- Ensure that NPM is installed.
-- Ensure that [The Wall App backend](https://github.com/hpmoreira05/backend_wall_app/) is running
+  Ensure that `npm v.6.14.15` is installed and [The Wall App backend](https://github.com/hpmoreira05/backend_wall_app/) is running.
+
+## :vertical_traffic_light:  How to use it?
 
 1. Clone the repository
 - `git clone git@github.com:hpmoreira05/frontend_wall_app.git`
@@ -36,3 +35,15 @@ REACT_APP_URL=http://localhost:5000
 ```
 4. Start the project
 - `npm start`
+
+## 📹 Demo
+
+<div display="flex"/>
+<img src="./public/medias/desktop.gif" width="80%"/>
+<img src="./public/medias/mobile.gif" width="19%"/>
+<div>
+
+## :cloud: Deployment
+Host: [Heroku](https://www.heroku.com)
+
+You can access The Wall App using your computer or your mobile from here: [The Wall App API](https://wall-app-hpmoreira05-back.herokuapp.com/)
