@@ -38,8 +38,8 @@ REACT_APP_URL=http://localhost:5000
 
 ## 📹 Demo
 
-![Desktop](./public/medias/desktop.gif)
-<img src="./public/medias/desktop.gif" width="80%"/>
+<img src="./public/medias/desktop.gif" width="90%"/>
+<img src="./public/medias/mobile.gif" width="90%"/>
 
 ## :cloud: Deployment
 Host: [Heroku](https://www.heroku.com)
