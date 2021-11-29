@@ -44,4 +44,4 @@ The design was created with `Figma`. You can check it out accessing this link: [
 ## :cloud: Deployment
 Host: [Heroku](https://www.heroku.com)
 
-You can access The Wall App using your computer or your mobile from here: [The Wall App](https://wall-app-hpmoreira05-back.herokuapp.com/)
+You can access The Wall App using your computer or your mobile from here: [The Wall App](http://the-wall-app-hpmoreira05.herokuapp.com/)
